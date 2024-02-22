@@ -1,0 +1,102 @@
+body {
+	background: #EBF0F5;
+	height: 100%;
+	margin: 0px;
+    font-family: Noto Sans;
+}
+
+a {
+    text-decoration: none;
+}
+
+.side-tab{
+    color: white;
+	position: fixed;
+	height: 100%;
+	background: #030088;
+	float: left;
+	width: 290px;
+}
+
+.menu-el {
+    padding-left: 20px;
+    color: white;
+    font-size: 20px;
+    width: 240px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    margin: 0px 15px;
+    margin-bottom: 5px;
+}
+
+.active,
+.menu-el:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+
+}
+
+.menu-el:active {
+    background-color: rgba(255, 255, 255, 0.3);
+
+}
+
+.logo {
+    color: white;
+    font-size: 30px;
+    font-weight: 700;
+    padding-left: 20px;
+    padding-top: 27px;
+    padding-bottom: 27px;
+    display: flex;
+    align-items: center;
+}
+
+.bank-image {
+    height: 30px;
+    width: 30px;
+}
+
+.main-container {
+    margin-left: 330px;
+    margin-right: 30px;
+}
+
+nav {
+    padding-top: 35px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+    font-size: 25px;
+    margin-bottom: 37px;
+}
+
+.logout-icon {
+    height: 30px;
+    width: 30px;
+    margin-left: 5px;
+}
+
+.logout-link {
+    font-size: 22px;
+    color: black;
+    transition: 0.1s;
+    filter: opacity(0.6);
+    display: flex;
+    align-items: center;
+}
+
+.logout-link:hover {
+    filter: opacity(1);
+}
+
+.username-nav {
+    font-weight: 500;
+}
+
+.header {
+    font-size: 30px;
+    font-weight: 600;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Вход</title>
+  <link href='https://fonts.googleapis.com/css?family=Noto Sans:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" th:href="@{/css/registration.css}" href="../../css/registration.css" />
+</head>
+<body>
+<div class="container">
+  <h1 align="center">Вход</h1>
+  <div align="center" th:if="${param.success}">
+    <div class="success-message">Аккаут зарегистрирован</div>
+  </div>
+  <div align="center" th:if="${param.error}">
+    <div class="error-message">Неправильный логин или пароль</div>
+  </div>
+  <div  align="center" th:if="${param.logout}">
+    <div class="message">Вы вышли из аккаунта</div>
+  </div>
+  <form
+          method = "post"
+          role="form"
+          th:action="@{/login}">
+    <input id="username" type="text" name = "username" placeholder="Логин" autocorrect="off" required/>
+    <input id="password" name="password" type="password" placeholder="Пароль" required/>
+    <ul>
+      <li th:each="err : ${#fields.errors('*')}" th:text="${err}" class="text-error"/>
+    </ul>
+    <button id ="submit" type="submit" class = "btn">Далее</button>
+  </form>
+
+  <div align="center" class = "link-div">
+    <a th:href="@{/registration}" class = "link">Зарегистрироваться</a>
+  </div>
+</div>
+<script type="text/javascript" th:src="@{/js/registration.js}"></script>
+</body>
+</html>
+

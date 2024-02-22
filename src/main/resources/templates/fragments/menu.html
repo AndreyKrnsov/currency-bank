@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="side-tab" class="side-tab">
+  <div class="logo">
+    SumSumBank
+    <img th:src="@{/images/bank.png}" class="bank-image"/>
+  </div>
+  <a th:href="@{/}" id="link1">
+    <div class="menu-el">Главная</div>
+  </a>
+  <a th:href="@{/accounts}">
+    <div class="menu-el">Счета</div>
+  </a>
+  <a th:href="@{/transfers}">
+    <div class="menu-el">Переводы</div>
+  </a>
+  <a th:href="@{/exchange}">
+    <div class="menu-el">Обмен валюты</div>
+  </a>
+  <a th:href="@{/history}">
+    <div class="menu-el">История</div>
+  </a>
+</div>
+
+<nav th:fragment="navigation">
+  <div class="username-nav" th:text="${user.name}"/>
+  <div>
+    <a th:href="@{/logout}" class = "logout-link">
+      <span>Выйти</span>
+      <img th:src="@{images/logout.png}" class="logout-icon">
+    </a>
+  </div>
+</nav>
+</body>
+</html>

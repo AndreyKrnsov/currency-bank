@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Регистрация</title>
+  <link href='https://fonts.googleapis.com/css?family=Noto Sans:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" th:href="@{/css/registration.css}" href="../../css/registration.css" />
+</head>
+<body>
+<div class="container">
+  <h1 align="center">Регистрация</h1>
+  <form
+          method = "post"
+          th:action="@{/registration}"
+          th:object="${user}">
+    <input type="text" name = "userName" placeholder="Имя" th:field="*{firstName}" th:class="${#fields.hasErrors('firstName')}? fieldError" required/>
+    <input type="text" name = "userSurname" placeholder="Фамилия" th:field="*{lastName}" th:class="${#fields.hasErrors('lastName')}? fieldError" autocorrect="off" required/>
+    <input type="text" name = "userLogin" placeholder="Логин" th:field="*{username}" th:class="${#fields.hasErrors('username')}? fieldError" autocorrect="off" required/>
+    <input type="password" name="password" placeholder="Пароль" th:field="*{password}" th:class="${#fields.hasErrors('password')}? fieldError" required/>
+    <ul>
+      <li th:each="err : ${#fields.errors('*')}" th:text="${err}" class="text-error"/>
+    </ul>
+    <button type="submit" class = "btn">Далее</button>
+  </form>
+
+
+  <div align="center" class = "link-div">
+    <a th:href="@{/login}" class = "link">
+			<span class="arrow">
+				&#60;
+			</span>
+      Назад
+    </a>
+  </div>
+</div>
+</body>
+</html>
+

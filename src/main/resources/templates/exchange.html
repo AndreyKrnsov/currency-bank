@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Переводы</title>
+    <link href='https://fonts.googleapis.com/css?family=Noto Sans:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" th:href="@{/css/exchange.css}" href="../../css/exchange.css"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+</head>
+<body>
+<div th:replace="~{fragments/menu :: side-tab}"></div>
+<div class = "main-container">
+    <div th:replace="~{fragments/menu :: navigation}"></div>
+    <div th:if="${!accounts.empty}">
+
+        <div id="tabs">
+            <ul>
+                <li><a href="?buy" class="tab-link" id="a-buy">Купить</a></li>
+                <li><a href="?sell" class="tab-link" id="a-sell">Продать</a></li>
+            </ul>
+        </div>
+
+        <form th:action="@{/exchange}" method="post" id="exchange-buy" class="credit-account">
+            <div class="transfer-container" id="transfer-container-buy">
+                <div class="transfer-accounts-container">
+                    <div id="transfer-buy-out" class="transfer-out">
+                        <div class="transfer-direction">Откуда</div>
+                        <div class="main-account">
+                            <div class="main-account-info">
+                                <div>
+                                    <span th:text="${T(java.lang.String).format('•• %04d', mainAccount.id)}"/>
+                                    <span class="operation-subtitle">&nbsp;(Основной рублёвый)</span>
+                                </div>
+                                <div class="main-balance" th:text="'Баланс: ' + ${#numbers.formatDecimal(mainAccount.balance, 1, 'WHITESPACE', 2, 'COMMA')} + ' ₽'"/>
+                            </div>
+                            <input id="sum-input-buy" name="amount" class="sum-input" type="number" min="0" th:max="${mainAccount.balance}" placeholder="Сумма (₽)" required>
+                            <span class="sum-input-arrow">→</span>
+                        </div>
+                    </div>
+    
+                    <div id="transfer-buy-in" class="transfer-in">
+                        <div class="transfer-direction">Куда</div>
+                        <input type="hidden" name="action" value="buy"/>
+                        <div class="transfer-select-container">
+                            <select id="select-in-buy" name="accountId" class="currencies-list" form="exchange-buy" required>
+                                <option th:each="account : ${accounts}"
+                                        th:value="${account.id}"
+                                        th:title="${account.id} + 10000000000000000000"
+                                        th:text="${T(java.lang.String).format('•• %04d (%s)', account.id, account.currency)}"
+                                        th:data-info="${account.id + '|' + #numbers.formatDecimal(account.balance, 1, 'WHITESPACE', 2, 'COMMA') + '|' + account.currency + '|' + account.rate}"
+                                        style="white-space: pre-wrap">
+                                </option>
+                            </select>
+                            
+    
+                            <div class="selected-account-info">
+                                <div>Баланс:</div>
+                                <div id="selected-account-buy"></div>
+                            </div>
+                        </div>
+                        <div class="transfer-draft">
+                            <div id="transfer-draft-buy" class="transfer-draft-label"></div>
+                            <div id="transfer-draft-rate-buy" class="transfer-draft-label-rate"></div>
+                        </div>
+                        
+                    </div>
+                        
+                </div>
+                <button class="btn" type="submit">Купить</button>
+                </div>
+                
+            
+        </form>
+
+
+
+        <form th:action="@{/exchange}" method="post" id="exchange-sell" class="credit-account">
+            <div class="transfer-container" id="transfer-container-sell">
+                <div class="transfer-accounts-container">
+
+                    <div id="transfer-sell-in" class="transfer-in">
+                        <div class="transfer-direction">Откуда</div>
+                        <input type="hidden" name="action" value="sell"/>
+                        <div class="transfer-select-container">
+                            <select id="select-in-sell" name="accountId" class="currencies-list" form="exchange-sell" required>
+                                <option th:each="account : ${accounts}"
+                                        th:value="${account.id}"
+                                        th:title="${account.id} + 10000000000000000000"
+                                        th:text="${T(java.lang.String).format('•• %04d (%s)', account.id, account.currency)}"
+                                        th:data-info="${account.id + '|' + #numbers.formatDecimal(account.balance, 1, 'WHITESPACE', 2, 'COMMA') + '|' + account.currency + '|' + account.rate}"
+                                        style="white-space: pre-wrap">
+                                </option>
+                            </select>
+                            
+
+                            <div class="selected-account-info">
+                                <div>Баланс:</div>
+                                <div id="selected-account-sell"></div>
+                            </div>
+                        </div>
+                        <div class="sum-input-container">
+                            <input id="sum-input-sell" name="amount" class="sum-input" type="number" min="0" placeholder="Сумма " required>
+                        <span class="sum-input-arrow">→</span>
+                        </div>
+                        
+                          
+                    </div>
+
+                    <div id="transfer-sell-out" class="transfer-out">
+                        <div class="transfer-direction">Куда</div>
+                        <div class="main-account">
+                            <div class="main-account-info">
+                                <div>
+                                    <span th:text="${T(java.lang.String).format('•• %04d', mainAccount.id)}"/>
+                                    <span class="operation-subtitle">&nbsp;(Основной рублёвый)</span>
+                                </div>
+                                <div class="main-balance" th:text="'Баланс: ' + ${#numbers.formatDecimal(mainAccount.balance, 1, 'WHITESPACE', 2, 'COMMA')} + ' ₽'"/>
+                            </div>
+                        </div>
+                        <div class="transfer-draft">
+                            <div id="transfer-draft-sell" class="transfer-draft-label"></div>
+                            <div id="transfer-draft-rate-sell" class="transfer-draft-label-rate"></div>
+                        </div> 
+                    </div>
+                    
+                </div>
+                <button class="btn" type="submit">Продать</button>
+            </div>
+            
+        </form>
+        
+        
+
+
+
+    </div>
+
+
+<div th:if="${accounts.empty}">
+    Сначала создайте хотя бы один счёт
+    <div class="accounts-settings">
+        <a th:href="@{/accounts}">
+          <img th:src="@{images/settings.png}" class="settings-icon">
+          <span>управлять счетами</span>
+        </a>
+      </div>
+</div>
+</div>
+ 
+
+<script type="text/javascript" th:src="@{/js/menu.js}"></script>
+<script type="text/javascript" th:src="@{/js/exchange.js}"></script>
+</body>
+</html>

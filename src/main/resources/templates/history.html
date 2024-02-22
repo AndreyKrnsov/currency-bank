@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>История</title>
+  <link href='https://fonts.googleapis.com/css?family=Noto Sans:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" th:href="@{/css/history.css}" href="../../css/history.css"/>
+  <link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>
+<div th:replace="~{fragments/menu :: side-tab}"></div>
+<div class = "history-main-container">
+  <div class="history-nav">
+    <div th:replace="~{fragments/menu :: navigation}"></div>
+  </div>
+
+  <div th:if="${!operations.empty}">
+    <table class="history-table">
+      <tr>
+        <th class="date-cell">Дата</th>
+        <th>Тип операции</th>
+        <th>Счёт</th>
+        <th class="amount-cell">Сумма</th>
+      </tr>
+      <tr th:each="operation : ${operations}">
+        <td class="date-cell">
+          <span class="operation-date" th:text="${operation.date}"/> <br>
+          <span class="operation-time" th:text="${operation.time}"/>
+        </td>
+        <td th:text="${operation.type}"/>
+        <td th:text="${#strings.replace(operation.accounts, ' ', '&nbsp;')}"/>
+        <td class="amount-cell">
+          <div class="operation-amount" th:text="${operation.amount}"/>
+          <div th:if="${operation.rate} != null and ${operation.rate} != 0" class="operation-rate" th:text="'по курсу: ' + ${operation.rate}"/>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div th:if="${operations.empty}" class="no-operations-container">
+    <div class="no-operations-message">
+      Вы не совершали операций
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" th:src="@{/js/menu.js}"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Главная</title>
+  <link href='https://fonts.googleapis.com/css?family=Noto Sans:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" th:href="@{/css/home.css}" href="../../css/home.css"/>
+  <link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>
+  <div th:replace="~{fragments/menu :: side-tab}"></div>
+  <div class = "main-container">
+    <div th:replace="~{fragments/menu :: navigation}"></div>
+
+    <div class="balance-container">
+      <div class="balance-head">
+        Баланс
+      </div>
+      <div class="balance-num">
+        <div th:text="${#numbers.formatInteger(balance, 1, 'WHITESPACE')}"/>
+        <div class="pens" th:text="',' + ${pens}"/>
+        <div>&nbsp;₽</div>
+      </div>
+      <div class="balance-link">
+        <a th:href="@{/transfers}">
+                        <span class="balance-plus">
+                            +
+                        </span>
+          пополнить счет
+        </a>
+      </div>
+    </div>
+
+    <div class="accounts-container">
+      <div class="accounts-head header">Счета:</div>
+      <table class="accounts-table">
+        <tr>
+          <th>Валюта</th>
+          <th>Баланс</th>
+          <th>Номер</th>
+        </tr>
+        <tr th:each="account : ${user.accounts}">
+          <td th:text="${account.currency}"/>
+          <td th:text="${#numbers.formatDecimal(account.balance, 1, 'WHITESPACE', 2, 'COMMA')}"/>
+          <td th:text="${account.id} + 10000000000000000000"/>
+        </tr>
+      </table>
+      <div class="accounts-settings">
+        <a th:href="@{/accounts}">
+          <img th:src="@{images/settings.png}" class="settings-icon">
+          <span>управлять счетами</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script type="text/javascript" th:src="@{/js/menu.js}"></script>
+</body>
+</html>

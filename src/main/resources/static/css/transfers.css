@@ -1,0 +1,134 @@
+form *,
+form *::before,
+form *::after {
+   box-sizing: border-box;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form select {
+    appearance: none;
+    border: 1px, solid, black;
+    border-radius: 10px;
+    background-color: #FFF;
+    padding: 12px;
+    margin: 0;
+    width: 190px;
+    font-family: Noto Sans;
+    font-weight: 500;
+    font-size: 20px;
+    cursor: inherit;
+    line-height: inherit;
+    background-image : url("../images/chevron-down.png");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 12px) center;
+    background-size : 20px;
+}
+
+form select:focus {
+    border: 1px, solid, blue;
+    outline: none;
+}
+
+form select option {
+    display: flex;
+    flex-direction: column;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+.btn {
+    border-radius: 10px;
+    height: 45px;
+	width: 210px;
+	background-color: #030088;
+	font-size: 20px;
+	font-weight: 400;
+	color: #ffffff;
+	margin: 0px;
+	border: none;
+}
+
+.sum-input {
+    border-radius: 10px;
+	height: 50px;
+	width: 250px;
+    padding-left: 20px;
+    padding-right: 10px;
+    color: #000000;
+    font-size: 22px;
+    font-weight: 400;
+    border: 1px solid black;
+    outline: none;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+#tabs {
+    margin-bottom: 40px;
+}
+
+.operation-title {
+    font-size: 20px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.operation-subtitle {
+    margin-left: 5px;
+    color: #8e8e8e;
+    font-size: 17px;
+}
+
+.tab-link {
+    font-weight: 700;
+    font-size: 25px;
+    margin-right: 20px;
+    border: none;
+    background: none;
+    color: rgba(3, 0, 136, 0.4);
+    transition: 0.1s;
+}
+
+.tab-active {
+    border-bottom: 1px, solid !important;
+    color: rgba(3, 0, 136, 1);
+}
+
+.tab-link:hover {
+    color: rgba(3, 0, 136, 1);
+}
+
+
+#tabs ul {
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    list-style-type: none;
+}
+
+.sum-container {
+    display: flex;
+    grid-gap: 15px;
+    flex-direction: row;
+    align-items: center;
+}
+
+.sum-container span {
+    font-size: 20px;
+}

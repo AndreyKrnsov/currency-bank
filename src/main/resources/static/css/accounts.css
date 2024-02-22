@@ -1,0 +1,96 @@
+.delete-form {
+    padding-bottom: 0px;
+}
+
+.delete-button {
+    color: white;
+    border-radius: 5px;
+    border: none;
+    transition: 0.1s;
+    background-color: rgba(255,0,0, 1);
+    font-size: 10px;
+    margin-left: -20px;
+}
+
+.delete-button:active {
+    background-color: #c20000;
+}
+
+#accounts-container {
+    margin-top: 0px;
+}
+
+.new-account-container {
+    margin-top: 40px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form *,
+form *::before,
+form *::after {
+   box-sizing: border-box;
+}
+
+form select {
+    appearance: none;
+    border: 1px, solid, black;
+    border-radius: 10px;
+    background-color: #FFF;
+    padding: 12px;
+    margin: 0;
+    width: 150px;
+    font-family: Noto Sans;
+    font-weight: 600;
+    font-size: 20px;
+    cursor: inherit;
+    line-height: inherit;
+    background-image : url("../images/chevron-down.png");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 12px) center;
+    background-size : 20px;
+}
+
+form select:focus {
+    border: 1px, solid, blue;
+    outline: none;
+}
+
+
+/* form option:hover {
+    background: ;
+} */
+
+.new-account-h2 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.btn {
+    border-radius: 10px;
+    height: 45px;
+	width: 200px;
+	background-color: #030088;
+	font-size: 20px;
+	font-weight: 400;
+	color: #ffffff;
+	margin: 0px;
+	margin-top: 20px;
+	border: none;
+}
+
+.btn:active {
+	background: #040260;
+}
+
+.chevron-icon {
+    width: 10px;
+    height: 10px;
+    background: black;
+    filter: opacity(1);
+}

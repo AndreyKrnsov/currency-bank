@@ -1,0 +1,228 @@
+form *,
+form *::before,
+form *::after {
+   box-sizing: border-box;
+}
+
+.transfer-in {
+    display: flex;
+    flex-direction: column;
+}
+
+form select {
+    appearance: none;
+    border: 1px, solid, black;
+    border-radius: 10px;
+    background-color: #FFF;
+    padding: 12px;
+    margin: 0;
+    width: 190px;
+    font-family: Noto Sans;
+    font-weight: 500;
+    font-size: 20px;
+    cursor: inherit;
+    line-height: inherit;
+    background-image : url("../images/chevron-down.png");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 12px) center;
+    background-size : 20px;
+}
+
+form select:focus {
+    border: 1px, solid, blue;
+    outline: none;
+}
+
+form select option {
+    display: flex;
+    flex-direction: column;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* 
+input[type=number] {
+  -moz-appearance: textfield;
+} */
+
+
+.btn {
+    border-radius: 10px;
+    height: 45px;
+	width: 210px;
+	background-color: #030088;
+	font-size: 20px;
+	font-weight: 400;
+	color: #ffffff;
+	margin: 0px;
+	border: none;
+}
+
+.sum-input {
+    border-radius: 10px;
+	height: 50px;
+	width: 250px;
+    padding-left: 20px;
+    padding-right: 10px;
+    color: #000000;
+    font-size: 22px;
+    font-weight: 400;
+    border: 1px solid black;
+    outline: none;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.sum-input-arrow {
+    margin-left: 25px;
+}
+
+#tabs {
+    margin-bottom: 40px;
+}
+
+.operation-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.operation-subtitle {
+    margin-left: 5px;
+    color: #8e8e8e;
+    font-size: 17px;
+}
+
+.tab-link {
+    font-weight: 700;
+    font-size: 25px;
+    margin-right: 20px;
+    border: none;
+    background: none;
+    color: rgba(3, 0, 136, 0.4);
+    transition: 0.1s;
+}
+
+.tab-active {
+    border-bottom: 1px, solid !important;
+    color: rgba(3, 0, 136, 1);
+}
+
+.tab-link:hover {
+    color: rgba(3, 0, 136, 1);
+}
+
+
+#tabs ul {
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    list-style-type: none;
+}
+
+.sum-container {
+    display: flex;
+    grid-gap: 15px;
+    flex-direction: row;
+    align-items: center;
+}
+
+.sum-input-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    grid-gap: 20px;
+}
+
+.sum-container span {
+    font-size: 20px;
+}
+
+.cur-title {
+    margin-bottom: 5px;
+}
+
+.transfer-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.transfer-accounts-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.transfer-out {
+    margin-right: 50px;
+}
+
+.transfer-direction {
+    margin-bottom: 15px;
+}
+
+.main-account-info {
+    display: flex;
+    flex-direction: column;
+    vertical-align: middle;
+    height: 53px;
+}
+
+.transfer-select-container {
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.selected-account-info {
+    display: flex;
+    flex-direction: column;
+    vertical-align: middle;
+    margin-left: 10px;
+    margin-right: 100px;
+}
+
+.transfer-draft {
+    display: flex;
+    flex-direction: column;
+    vertical-align: middle;
+    height: 60px;
+    margin-top: 16px;
+}
+
+.transfer-draft-label {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.accounts-settings {
+    margin-top: 20px;
+}
+
+.accounts-settings a {
+    color: black;
+    filter: opacity(0.4);
+    border-bottom: 1px solid;
+    margin-left: 24px;
+    transition: 0.1s;
+}
+
+.accounts-settings a:hover {
+    filter: opacity(1);
+}
+
+.settings-icon {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    margin-left: -24px;
+    margin-top: 1px;
+}
+

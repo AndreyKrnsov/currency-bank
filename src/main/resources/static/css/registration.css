@@ -1,0 +1,141 @@
+body {
+	padding: 0px;
+	margin: 0px;
+ 	background: #EBF0F5;
+	width: 100vw;
+	height: 100vh;
+	font-family: Noto Sans;
+	display: flex;
+	flex-direction: coulmn;
+	align-items: center;
+	justify-content: center;
+}
+
+li {
+    list-style-type: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+	color: #000000;
+	font-size: 100%;
+	text-align: center;
+}
+
+h1 {
+	margin-top: 0px;
+	margin-bottom: 4%;
+	font-weight: Bold;
+	font-size: 40px;
+	font-weight: 700;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+input {
+	border-radius: 10px;
+	height: 60px;
+	width: 390px;
+    padding-left: 20px;
+    padding-right: 10px;
+    color: #000000;
+    font-size: 30px;
+    font-weight: 400;
+    border: 1px solid black;
+    outline: none;
+    margin-bottom: 15px;
+}
+::placeholder {
+   color: #9c9c9c;
+}
+
+.container {
+	width: 100%;
+	margin: 0 auto;
+	margin-bottom: 30px;
+}
+
+.btn {
+    border-radius: 10px;
+    height: 60px;
+	width: 420px;
+	background: #030088;
+	font-size: 30px;
+	font-weight: 400;
+	color: #ffffff;
+	margin: 0px;
+	margin-top: 10px;
+	border: none;
+}
+
+.btn:active {
+	background: #040260;
+}
+
+.link-div {
+	margin-top: 15px;
+}
+
+.link {
+	text-decoration: none;
+	color: rgb(96, 96, 96);
+	border-bottom: 1.5px dashed;
+	font-size: 20px;
+	margin-top: 10px;
+	transition: 0.1s;
+}
+
+.link:hover {
+	color: black;
+}
+.arrow {
+	position: absolute;
+	margin-left: -20px;
+	margin-top: 0.5px;
+}
+
+.tab {
+  display: none;
+}
+
+.fieldError{
+    border: 1px solid red;
+}
+
+.text-error {
+    color: red;
+    font-size: 15px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.success-message {
+    display: absolute;
+    font-size: 15px;
+    color: green;
+    margin-top: -35px;
+    margin-bottom: 20px;
+}
+
+.error-message {
+    display: absolute;
+    font-size: 15px;
+    color: red;
+    margin-top: -35px;
+    margin-bottom: 20px;
+}
+
+.message {
+    display: relative;
+    font-size: 15px;
+    color: gray;
+    margin-top: -35px;
+    margin-bottom: 20px;
+}

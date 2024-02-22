@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Счета</title>
+    <link href='https://fonts.googleapis.com/css?family=Noto Sans:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" th:href="@{/css/accounts.css}" href="../../css/accounts.css"/>
+    <link rel="stylesheet" th:href="@{/css/home.css}" href="../../css/home.css"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>
+    <div th:replace="~{fragments/menu :: side-tab}"></div>
+    <div class = "main-container">
+        <div th:replace="~{fragments/menu :: navigation}"></div>
+        <div class="accounts-container" id="accounts-container">
+            <div class="accounts-head header">Счета:</div>
+            <table class="accounts-table">
+                <tr>
+                    <th>Валюта</th>
+                    <th>Баланс</th>
+                    <th>Номер</th>
+                </tr>
+                <tr th:each="account : ${user.accounts}">
+                    <td id="currencyCharCode" th:text="${account.currency}"/>
+                    <td th:text="${#numbers.formatDecimal(account.balance, 1, 'WHITESPACE', 2, 'COMMA')}"/>
+                    <td th:text="${account.id} + 10000000000000000000"/>
+                    <td>
+                        <form th:if="${account.currency} != 'RUB'" th:action="@{/accounts}" method="post" class="delete-form">
+                            <input type="hidden" name="accountId" th:value="${account.id}"/>
+                            <input type="hidden" name="action" value="delete"/>
+                            <button type="submit" class="delete-button">Удалить счёт</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="new-account-container">
+            <div class="header new-account-head">
+                Открыть новый счёт
+            </div>
+            <div class="new-account-h2">
+                Валюта:
+            </div>
+            <div>
+                <form th:action="@{/accounts}" method="post" id="create-account">
+                    <input type="hidden" name="action" value="create"/>
+                    <select name="currency" class="currencies-list" form="create-account">
+                        <option th:each="currency : ${currencies}"
+                                th:if="!${#lists.contains(userCurrencies, currency)}"
+                                th:value="${currency}"
+                                th:text="${currency}"/>
+                        </option>
+                    </select>
+                    <button class="btn" type="submit">Создать счёт</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript" th:src="@{/js/accounts.js}"></script>
+    <script type="text/javascript" th:src="@{/js/menu.js}"></script>
+</body>
+</html>

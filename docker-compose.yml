@@ -1,0 +1,25 @@
+version: '3.1'
+
+services:
+  db:
+    image: mysql
+    container_name: mysqldb
+    ports:
+      - "3306:3306"
+    restart: always
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      MYSQL_DATABASE: testDB
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+
+  app:
+    build: .
+    ports:
+      - 8443:8443
+    depends_on:
+      - db
+    environment:
+      - spring.datasource.url=jdbc:mysql://db:3306/testDB
+    volumes:
+      - .m2:/root/.m2
